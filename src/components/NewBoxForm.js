@@ -11,7 +11,11 @@ class NewBoxFoprm extends Component {
       [e.target.name]: e.target.value,
     });
   }
-  handleSubmit() {}
+  handleSubmit(e) {
+    e.preventDefault();
+    this.props.create(this.state);
+    this.setState({ color: " ", width: " ", height: " " });
+  }
   render() {
     return (
       <div>
@@ -22,6 +26,7 @@ class NewBoxFoprm extends Component {
             type="text"
             name="color"
             id="color"
+            value={this.state.color}
           />
           <label htmlFor="width">Width</label>
           <input
@@ -29,6 +34,7 @@ class NewBoxFoprm extends Component {
             type="text"
             name="width"
             id="width"
+            value={this.state.width}
           />
           <label htmlFor="height">Height</label>
           <input
@@ -36,6 +42,7 @@ class NewBoxFoprm extends Component {
             type="text"
             name="height"
             id="height"
+            value={this.state.height}
           />
           <button>Add</button>
         </form>
